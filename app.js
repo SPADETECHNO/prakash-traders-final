@@ -1,3 +1,349 @@
+// Product data for popup details
+const productDetailsData = {
+    'transparent-acrylic': {
+        title: 'Transparent Acrylic Sheets',
+        image: 'assets/products/Transparent_acrylic_sheet.jpeg',
+        features: [
+            'Crystal clear transparency (92% light transmission)',
+            'UV resistant for outdoor applications',
+            'Impact resistant - 10x stronger than glass',
+            'Easy to fabricate and machine',
+            'Lightweight yet durable',
+            'Excellent weather resistance'
+        ],
+        specifications: {
+            'Standard Sizes': '4ft x 8ft, 4ft x 6ft, 4ft x 3ft',
+            'Thickness Range': '2mm to 25mm',
+        }
+    },
+    'colored-acrylic': {
+        title: 'Colored Acrylic Sheets',
+        image: 'assets/products/coloured_acrylic_sheet.jpeg',
+        features: [
+            'Wide range of vibrant colors',
+            'UV resistant color retention',
+            'Impact resistant and durable',
+            'Easy to cut and fabricate',
+            'Smooth surface finish',
+            'Weather resistant for outdoor use'
+        ],
+        specifications: {
+            'Standard Sizes': '4ft x 8ft, 4ft x 6ft, 3ft x 4ft',
+            'Thickness Range': '2mm to 25mm',
+          
+        }
+    },
+    'mirrored-acrylic': {
+        title: 'Mirrored Acrylic Sheets',
+        image: 'assets/products/mirror_acrylic.jpeg',
+        features: [
+            '95% reflectivity for crystal clear reflection',
+            'Shatter-resistant and safe',
+            '50% lighter than glass mirrors',
+            'Easy to cut and fabricate',
+            'Resistant to moisture and humidity',
+            'Available in golden & silver color'
+        ],
+        specifications: {
+            'Standard Sizes': '4ft x 8ft',
+            'Thickness Range': '1mm to 6mm',
+        }
+    },
+    'acrylic-pipes': {
+        title: 'Acrylic Pipes',
+        image: 'assets/products/acrylic_pipes.jpeg',
+        features: [
+            'Crystal clear transparency',
+            'Excellent chemical resistance',
+            'High impact strength',
+            'Easy to machine and fabricate',
+            'Smooth internal and external surfaces',
+            'UV resistant for outdoor use'
+        ],
+        specifications: {
+            'Outer Diameter': '70mm to 310mm, 360mm and 500mm',
+            'Wall Thickness': '3mm to 8mm',
+            'Standard Lengths': '600mm, 2m',
+        }
+    },
+    'acrylic-fabrication': {
+        title: 'Acrylic Fabrication',
+        image: 'assets/products/acrylic_fabrication_1.jpeg',
+        features: [
+            'Custom design and fabrication',
+            'Precision cutting and machining',
+            'Professional polishing and finishing',
+            'Complex geometric shapes',
+            'Multi-layer assemblies',
+            'Quality assurance and testing'
+        ],
+        specifications: {
+            'design' : 'Custom designs available',
+            'dimensions': 'available in various sizes and thicknesses',
+        }
+    },
+    'pvc-foam': {
+        title: 'PVC Foam Sheets',
+        image: 'assets/products/foam_sheets.jpeg',
+        features: [
+            'Lightweight yet rigid structure',
+            'Excellent printability for graphics',
+            'Superior chemical resistance',
+            'Easy to cut, route, and fabricate',
+            'Weather resistant for outdoor use',
+            'Cost-effective signage solution'
+        ],
+        specifications: {
+            'Standard Sizes': '8ft x 4ft',
+            'Thickness Range': '3mm to 8mm',
+        }
+    },
+    'pc-compact': {
+        title: 'PC Compact Sheets',
+        image: 'assets/products/polycarbonate.jpeg',
+        features: [
+            '250x stronger than glass',
+            '90% light transmission',
+            '100% UV protection',
+            'Temperature resistant -40°C to +120°C',
+            'Self-extinguishing flame retardant',
+            'Excellent weatherability'
+        ],
+        specifications: {
+            'Standard Size': '8ft x 4ft',
+            'Thickness Range': '2mm to 12mm',
+
+        }
+    },
+    'pc-multiwall': {
+        title: 'PC Multiwall Sheets',
+        image: 'assets/products/PC_multiwall.jpeg',
+        features: [
+            'Excellent thermal insulation',
+            'Lightweight and easy to handle',
+            'High impact resistance',
+            '10-year UV protection warranty',
+            'Self-extinguishing properties',
+            'Available in multiple colors'
+        ],
+        specifications: {
+            'Standard Width': '2100mm (7ft)',
+            'Length': 'Up to 12m',
+            'Thickness': '4mm to 25mm',
+
+        }
+    },
+    'pc-embossed': {
+        title: 'PC Embossed Sheets',
+        image: 'assets/products/embossed_polycarbonate.jpeg',
+        features: [
+            'Excellent light diffusion properties',
+            'Privacy with light transmission',
+            'Attractive textured surface',
+            'High impact resistance',
+            'UV protection and weatherability',
+            'Easy to clean and maintain'
+        ],
+        specifications: {
+            'Standard Size': '8ft x 4ft',
+            'Thickness': '2mm to 8mm',
+            
+        }
+    }
+};
+
+// Product Carousel Functionality
+class ProductCarousel {
+    constructor(carouselElement) {
+        this.carousel = carouselElement;
+        this.slides = carouselElement.querySelectorAll('.carousel-slide');
+        this.dots = carouselElement.querySelectorAll('.carousel-dot');
+        this.prevBtn = carouselElement.querySelector('.carousel-prev');
+        this.nextBtn = carouselElement.querySelector('.carousel-next');
+        this.currentSlide = 0;
+        this.totalSlides = this.slides.length;
+        this.autoplayInterval = null;
+        
+        this.init();
+    }
+    
+    init() {
+        this.addEventListeners();
+        this.startAutoplay();
+    }
+    
+    addEventListeners() {
+        if (this.prevBtn) {
+            this.prevBtn.addEventListener('click', () => this.prevSlide());
+        }
+        
+        if (this.nextBtn) {
+            this.nextBtn.addEventListener('click', () => this.nextSlide());
+        }
+        
+        this.dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => this.goToSlide(index));
+        });
+        
+        // Pause autoplay on hover
+        this.carousel.addEventListener('mouseenter', () => this.stopAutoplay());
+        this.carousel.addEventListener('mouseleave', () => this.startAutoplay());
+    }
+    
+    showSlide(index) {
+        // Remove active class from all slides and dots
+        this.slides.forEach(slide => slide.classList.remove('active'));
+        this.dots.forEach(dot => dot.classList.remove('active'));
+        
+        // Add active class to current slide and dot
+        if (this.slides[index]) {
+            this.slides[index].classList.add('active');
+        }
+        if (this.dots[index]) {
+            this.dots[index].classList.add('active');
+        }
+    }
+    
+    nextSlide() {
+        this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
+        this.showSlide(this.currentSlide);
+    }
+    
+    prevSlide() {
+        this.currentSlide = (this.currentSlide - 1 + this.totalSlides) % this.totalSlides;
+        this.showSlide(this.currentSlide);
+    }
+    
+    goToSlide(index) {
+        this.currentSlide = index;
+        this.showSlide(this.currentSlide);
+        this.restartAutoplay();
+    }
+    
+    startAutoplay() {
+        this.autoplayInterval = setInterval(() => {
+            this.nextSlide();
+        }, 4000);
+    }
+    
+    stopAutoplay() {
+        if (this.autoplayInterval) {
+            clearInterval(this.autoplayInterval);
+            this.autoplayInterval = null;
+        }
+    }
+    
+    restartAutoplay() {
+        this.stopAutoplay();
+        this.startAutoplay();
+    }
+}
+
+// Product Modal Functionality
+class ProductModal {
+    constructor() {
+        this.modal = document.getElementById('product-modal');
+        this.overlay = document.getElementById('modal-overlay');
+        this.closeBtn = document.getElementById('modal-close');
+        this.title = document.getElementById('modal-title');
+        this.image = document.getElementById('modal-image');
+        this.features = document.getElementById('modal-features');
+        this.specs = document.getElementById('modal-specs');
+        // this.applications = document.getElementById('modal-applications');
+        
+        this.init();
+    }
+    
+    init() {
+        this.addEventListeners();
+    }
+    
+    addEventListeners() {
+        // Close modal events
+        if (this.closeBtn) {
+            this.closeBtn.addEventListener('click', () => this.close());
+        }
+        
+        if (this.overlay) {
+            this.overlay.addEventListener('click', () => this.close());
+        }
+        
+        // ESC key to close
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.modal && this.modal.classList.contains('active')) {
+                this.close();
+            }
+        });
+        
+        // Product detail buttons
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('product-details-btn')) {
+                const productId = e.target.getAttribute('data-product');
+                this.open(productId);
+            }
+        });
+    }
+    
+    open(productId) {
+        const productData = productDetailsData[productId];
+        if (!productData) return;
+        
+        // Populate modal content
+        if (this.title) this.title.textContent = productData.title;
+        if (this.image) {
+            this.image.src = productData.image;
+            this.image.alt = productData.title;
+        }
+        
+        // Populate features
+        if (this.features) {
+            this.features.innerHTML = '';
+            productData.features.forEach(feature => {
+                const li = document.createElement('li');
+                li.textContent = feature;
+                this.features.appendChild(li);
+            });
+        }
+        
+        // Populate specifications
+        if (this.specs) {
+            this.specs.innerHTML = '';
+            Object.entries(productData.specifications).forEach(([key, value]) => {
+                const specItem = document.createElement('div');
+                specItem.className = 'spec-item';
+                specItem.innerHTML = `
+                    <span class="spec-label">${key}:</span>
+                    <span class="spec-value">${value}</span>
+                `;
+                this.specs.appendChild(specItem);
+            });
+        }
+        
+        // Populate applications
+        if (this.applications) {
+            this.applications.innerHTML = '';
+            productData.applications.forEach(application => {
+                const li = document.createElement('li');
+                li.textContent = application;
+                this.applications.appendChild(li);
+            });
+        }
+        
+        // Show modal
+        if (this.modal) {
+            this.modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+    }
+    
+    close() {
+        if (this.modal) {
+            this.modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    }
+}
+
 // DOM Elements
 const navToggle = document.getElementById('nav-toggle');
 const navMenu = document.getElementById('nav-menu');
@@ -98,18 +444,12 @@ if (heroPrev) {
     });
 }
 
-// Dots navigation - Fixed implementation
+// Dots navigation
 heroDots.forEach((dot, index) => {
     dot.addEventListener('click', (e) => {
         e.preventDefault();
         goToSlide(index);
     });
-});
-
-// Start the slider
-document.addEventListener('DOMContentLoaded', () => {
-    showSlide(0); // Initialize first slide
-    startSlideInterval();
 });
 
 // Pause slider on hover
@@ -124,7 +464,7 @@ if (heroSection) {
     });
 }
 
-// Fixed Smooth Scrolling for Navigation Links
+// Smooth Scrolling for Navigation Links
 function initNavigation() {
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
@@ -315,7 +655,7 @@ function removeNotification(notification) {
     }
 }
 
-// Fixed Contact Form Handling
+// Contact Form Handling
 function initContactForm() {
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
@@ -446,32 +786,32 @@ function initKeyboardNavigation() {
     });
 }
 
-// // Click to call/email functionality
-// function initClickToContact() {
-//     // Make phone numbers clickable
-//     const phoneElements = document.querySelectorAll('p, span, div');
-//     phoneElements.forEach(element => {
-//         if (element.textContent.includes('+91 94281 04757') || element.textContent.includes('94281 04757')) {
-//             element.style.cursor = 'pointer';
-//             element.style.color = 'var(--orange-primary)';
-//             element.addEventListener('click', () => {
-//                 window.open('tel:+919428104757');
-//             });
-//         }
-//     });
+// Click to call/email functionality
+function initClickToContact() {
+    // Make phone numbers clickable
+    const phoneElements = document.querySelectorAll('p, span, div');
+    phoneElements.forEach(element => {
+        if (element.textContent.includes('+91 94281 04757') || element.textContent.includes('94281 04757')) {
+            element.style.cursor = 'pointer';
+            element.style.color = 'var(--orange-primary)';
+            element.addEventListener('click', () => {
+                window.open('tel:+919428104757');
+            });
+        }
+    });
 
-//     // Make email addresses clickable
-//     const emailElements = document.querySelectorAll('p, span, div');
-//     emailElements.forEach(element => {
-//         if (element.textContent.includes('prakashtraderss@gmail.com')) {
-//             element.style.cursor = 'pointer';
-//             element.style.color = 'var(--orange-primary)';
-//             element.addEventListener('click', () => {
-//                 window.open('mailto:prakashtraderss@gmail.com');
-//             });
-//         }
-//     });
-// }
+    // Make email addresses clickable
+    const emailElements = document.querySelectorAll('p, span, div');
+    emailElements.forEach(element => {
+        if (element.textContent.includes('prakashtraderss@gmail.com')) {
+            element.style.cursor = 'pointer';
+            element.style.color = 'var(--orange-primary)';
+            element.addEventListener('click', () => {
+                window.open('mailto:prakashtraderss@gmail.com');
+            });
+        }
+    });
+}
 
 // Performance optimization: Throttle scroll events
 function throttle(func, limit) {
@@ -492,7 +832,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // Create notification styles
     createNotificationStyles();
     
-    // Initialize all functionality
+    // Initialize product carousel for fabrication
+    const fabricationCarousel = document.getElementById('fabrication-carousel');
+    if (fabricationCarousel) {
+        new ProductCarousel(fabricationCarousel);
+    }
+    
+    // Initialize product modal
+    new ProductModal();
+    
+    // Initialize all other functionality
     initNavigation();
     initContactForm();
     initProductCards();
@@ -511,7 +860,7 @@ document.addEventListener('DOMContentLoaded', () => {
         startSlideInterval();
     }
     
-    console.log('Prakash Traders website loaded successfully! 🚀');
+    console.log('Prakash Traders website with carousel and modal loaded successfully! 🚀🎠');
 });
 
 // Apply throttled scroll events

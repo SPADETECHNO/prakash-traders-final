@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Prakash Traders - Your Trusted Source for Acrylic, Polycarbonate, PVC & More!</title>
     <meta name="description" content="Leading retailer and wholesaler of Acrylic sheets, Polycarbonate sheets, and PVC foam sheets in Ahmedabad with 30+ years of experience.">
     <link rel="stylesheet" href="style.css">
@@ -15,7 +15,7 @@
         <nav class="nav container">
             <div class="nav__brand">
                 <img src="assets/logo.png" alt="Prakash Traders Logo" class="nav__logo-img">
-                <p class="nav__tagline">Trusted Acrylic Solutions</p>
+                <p class="nav__tagline"><b>Trusted Acrylic Solutions</b></p>
             </div>
             
             <div class="nav__menu" id="nav-menu">
@@ -151,8 +151,6 @@
                 <div class="about__image">
                     <div class="image-placeholder">
                         <img src="assets/about_us.jpeg" alt="About Prakash Traders">
-                        <!-- <i class="fas fa-industry"></i> -->
-                        <!-- <p>Acrylic Manufacturing Excellence</p> -->
                     </div>
                 </div>
             </div>
@@ -168,136 +166,180 @@
             </div>
             
             <div class="products__grid">
+                <!-- Transparent Acrylic Sheets -->
                 <div class="product-card">
                     <div class="product-card__image">
                         <div class="image-placeholder">
                             <img src="assets/products/Transparent_acrylic_sheet.jpeg" alt="Transparent Acrylic Sheets">
-                            <!-- <i class="fas fa-rectangle-ad"></i> -->
                         </div>
                     </div>
                     <div class="product-card__content">
                         <h3 class="product-card__title">Transparent Acrylic Sheets</h3>
                         <p class="product-card__description">Transparent acrylic sheet used in Machine guards, Panel boards, inspection windows and enclosures, Architectural applications, Medical device, Signage, Elevator displays and many more.</p>
                         <p class="product-card__availability">Available in different size and thickness</p>
-                        <!-- <a href="transparent-acrylic.html" class="btn btn--primary btn--small">View Details</a> -->
+                        <button class="btn btn--primary btn--small product-details-btn" 
+                                data-product="transparent-acrylic">View Details</button>
                     </div>
                 </div>
 
+                <!-- Colored Acrylic Sheets -->
                 <div class="product-card">
                     <div class="product-card__image">
                         <div class="image-placeholder">
                             <img src="assets/products/coloured_acrylic_sheet.jpeg" alt="Colored Acrylic Sheets">
-                            <!-- <i class="fas fa-palette"></i> -->
                         </div>
                     </div>
                     <div class="product-card__content">
                         <h3 class="product-card__title">Colored Acrylic Sheets</h3>
                         <p class="product-card__description">Colored acrylic sheets can be used in sign boards, logos, and 3D signs, also used for interior designs, art work, display stands, jewelry boxes, pen holders and many more.</p>
                         <p class="product-card__availability">Available in different size and thickness</p>
-                        <!-- <a href="colored-acrylic.html" class="btn btn--primary btn--small">View Details</a> -->
+                        <button class="btn btn--primary btn--small product-details-btn" 
+                                data-product="colored-acrylic">View Details</button>
                     </div>
                 </div>
 
+                <!-- Mirrored Acrylic Sheets -->
                 <div class="product-card">
                     <div class="product-card__image">
                         <div class="image-placeholder">
-                            <i class="fas fa-layer-group"></i>
+                            <img src="assets/products/mirror_acrylic.jpeg" alt="Mirrored Acrylic Sheets">
                         </div>
                     </div>
                     <div class="product-card__content">
                         <h3 class="product-card__title">Mirrored Acrylic Sheets</h3>
                         <p class="product-card__description">High-quality mirrored acrylic sheets perfect for decorative applications, architectural designs, retail displays, and interior decoration projects with excellent reflectivity and durability.</p>
                         <p class="product-card__availability">Available in different size and thickness</p>
-                        <!-- <a href="mirrored-acrylic.html" class="btn btn--primary btn--small">View Details</a> -->
+                        <button class="btn btn--primary btn--small product-details-btn" 
+                                data-product="mirrored-acrylic">View Details</button>
                     </div>
                 </div>
 
+                <!-- Acrylic Pipes -->
                 <div class="product-card">
                     <div class="product-card__image">
                         <div class="image-placeholder">
-                            <img src="assets/products/acrylic_pipes.jpeg" alt="Acrylic Pipes" >
-                            <!-- <i class="fas fa-pipe"></i> -->
+                            <img src="assets/products/acrylic_pipes.jpeg" alt="Acrylic Pipes">
                         </div>
                     </div>
                     <div class="product-card__content">
                         <h3 class="product-card__title">Acrylic Pipes</h3>
                         <p class="product-card__description">Acrylic pipes are used in lamps and lanterns, Handicrafts, Liquid levels, Bottling machines, Corrosive liquids.</p>
                         <p class="product-card__availability">Available in different diameter and wall thickness</p>
-                        <!-- <a href="acrylic-pipes.html" class="btn btn--primary btn--small">View Details</a> -->
+                        <button class="btn btn--primary btn--small product-details-btn" 
+                                data-product="acrylic-pipes">View Details</button>
                     </div>
                 </div>
 
+                <!-- Acrylic Fabrication with Carousel -->
                 <div class="product-card">
                     <div class="product-card__image">
-                        <div class="image-placeholder">
-                            <i class="fas fa-tools"></i>
+                        <div class="product-carousel" id="fabrication-carousel">
+                            <div class="carousel-container">
+                                <div class="carousel-slide active">
+                                    <img src="assets/products/acrylic_fabrication_1.jpeg" alt="Acrylic Fabrication Service 1">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="assets/products/acrylic_fabrication_2.jpeg" alt="Acrylic Fabrication Service 2">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="assets/products/acrylic_fabrication_3.jpeg" alt="Acrylic Fabrication Service 3">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="assets/products/acrylic_fabrication_4.jpeg" alt="Acrylic Fabrication Service 4">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="assets/products/acrylic_fabrication_5.jpeg" alt="Acrylic Fabrication Service 5">
+                                </div>
+                            </div>
+                            
+                            <!-- Carousel Controls -->
+                            <button class="carousel-prev" type="button">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="carousel-next" type="button">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                            
+                            <!-- Carousel Indicators -->
+                            <div class="carousel-indicators">
+                                <span class="carousel-dot active" data-slide="0"></span>
+                                <span class="carousel-dot" data-slide="1"></span>
+                                <span class="carousel-dot" data-slide="2"></span>
+                                <span class="carousel-dot" data-slide="3"></span>
+                                <span class="carousel-dot" data-slide="4"></span>
+                            </div>
                         </div>
                     </div>
                     <div class="product-card__content">
                         <h3 class="product-card__title">Acrylic Fabrication</h3>
                         <p class="product-card__description">Custom acrylic fabrication services including cutting, drilling, bending, polishing, and assembly for specialized projects, displays, and architectural applications.</p>
                         <p class="product-card__availability">Custom solutions available</p>
-                        <!-- <a href="acrylic-fabrication.html" class="btn btn--primary btn--small">View Details</a> -->
+                        <button class="btn btn--primary btn--small product-details-btn" 
+                                data-product="acrylic-fabrication">View Details</button>
                     </div>
                 </div>
 
+                <!-- PVC Foam Sheets -->
                 <div class="product-card">
                     <div class="product-card__image">
                         <div class="image-placeholder">
                             <img src="assets/products/foam_sheets.jpeg" alt="PVC Foam Sheets">
-                            <!-- <i class="fas fa-layer-group"></i> -->
                         </div>
                     </div>
                     <div class="product-card__content">
                         <h3 class="product-card__title">PVC Foam Sheets</h3>
                         <p class="product-card__description">Lightweight PVC foam sheets ideal for signage, advertising boards, display applications, interior decoration, and various industrial uses with excellent durability and workability.</p>
                         <p class="product-card__availability">Available in different size and thickness</p>
-                        <!-- <a href="pvc-foam.html" class="btn btn--primary btn--small">View Details</a> -->
+                        <button class="btn btn--primary btn--small product-details-btn" 
+                                data-product="pvc-foam">View Details</button>
                     </div>
                 </div>
 
+                <!-- PC Compact Sheets -->
                 <div class="product-card">
                     <div class="product-card__image">
                         <div class="image-placeholder">
                             <img src="assets/products/polycarbonate.jpeg" alt="PC Compact Sheets">
-                            <!-- <i class="fas fa-window-maximize"></i> -->
                         </div>
                     </div>
                     <div class="product-card__content">
                         <h3 class="product-card__title">PC Compact Sheets</h3>
                         <p class="product-card__description">PC Compact sheets are highly transparent and allow up to 90% light transmission, similar to glass. Whether used for skylights, windows, greenhouses, Machine covers, safety guards, Panel boards etc.</p>
                         <p class="product-card__availability">Available in 8ft x 4ft and thickness 2mm to 10mm</p>
-                        <!-- <a href="pc-compact.html" class="btn btn--primary btn--small">View Details</a> -->
+                        <button class="btn btn--primary btn--small product-details-btn" 
+                                data-product="pc-compact">View Details</button>
                     </div>
                 </div>
 
+                <!-- PC Multiwall Sheets -->
                 <div class="product-card">
                     <div class="product-card__image">
                         <div class="image-placeholder">
                             <img src="assets/products/PC_multiwall.jpeg" alt="PC Multiwall Sheets">
-                            <!-- <i class="fas fa-home"></i> -->
                         </div>
                     </div>
                     <div class="product-card__content">
                         <h3 class="product-card__title">PC Multiwall Sheets</h3>
                         <p class="product-card__description">PC Multiwall & Embossed both are the best UV protected roofing material of its kind so it's best for industrial or residential roofing it can also used for partitions, doors, gates and windows etc.</p>
                         <p class="product-card__availability">Available in different size, thickness and colors</p>
-                        <!-- <a href="pc-multiwall.html" class="btn btn--primary btn--small">View Details</a> -->
+                        <button class="btn btn--primary btn--small product-details-btn" 
+                                data-product="pc-multiwall">View Details</button>
                     </div>
                 </div>
 
+                <!-- PC Embossed Sheets -->
                 <div class="product-card">
                     <div class="product-card__image">
                         <div class="image-placeholder">
                             <img src="assets/products/embossed_polycarbonate.jpeg" alt="PC Embossed Sheets">
-                            <!-- <i class="fas fa-th-list"></i> -->
                         </div>
                     </div>
                     <div class="product-card__content">
                         <h3 class="product-card__title">PC Embossed Sheets</h3>
                         <p class="product-card__description">PC Embossed sheets provide excellent light diffusion and UV protection, ideal for outdoor and indoor applications with attractive textures and high-impact properties.</p>
                         <p class="product-card__availability">Available in different size, thickness and colors</p>
-                        <!-- <a href="pc-embossed.html" class="btn btn--primary btn--small">View Details</a> -->
+                        <button class="btn btn--primary btn--small product-details-btn" 
+                                data-product="pc-embossed">View Details</button>
                     </div>
                 </div>
             </div>
@@ -411,7 +453,7 @@
                             width="100%" 
                             height="300" 
                             style="border:0; border-radius: 8px;" 
-                            allowfullscreen="True" 
+                            allowfullscreen="true" 
                             loading="lazy" 
                             referrerpolicy="no-referrer-when-downgrade">
                         </iframe>
@@ -467,6 +509,62 @@
             </div>
         </div>
     </footer>
+
+    <!-- Product Details Modal -->
+    <div class="product-modal" id="product-modal">
+        <div class="modal-overlay" id="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modal-title">Product Details</h2>
+                <button class="modal-close" id="modal-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="modal-product-image">
+                    <img id="modal-image" src="" alt="Product Image">
+                </div>
+                
+                <div class="modal-product-info">
+
+                    <div class="modal-section">
+                        <h3>Specifications</h3>
+                        <div class="specs-grid" id="modal-specs">
+                            <!-- Specifications will be populated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3>Key Features</h3>
+                        <ul id="modal-features" class="feature-list">
+                            <!-- Features will be populated by JavaScript -->
+                        </ul>
+                    </div>
+                    
+
+                    
+                    <!-- <div class="modal-section">
+                        <h3>Applications</h3>
+                        <ul id="modal-applications" class="application-list">
+                            Applications will be populated by JavaScript 
+                        </ul>
+                    </div> -->
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <button class="btn btn--primary" onclick="window.location.href='#contact'">
+                    <i class="fas fa-envelope"></i>
+                    Get Quote
+                </button>
+                <button class="btn btn--outline" onclick="window.open('tel:+919428104757')">
+                    <i class="fas fa-phone"></i>
+                    Call Now
+                </button>
+            </div>
+        </div>
+    </div>
 
     <script src="app.js"></script>
 </body>
